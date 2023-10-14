@@ -1,16 +1,37 @@
-# This is a sample Python script.
+from fastapi import FastAPI
 
-# Press Mayús+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+app = FastAPI(
+    title='Noted API',
+    description='This a simple note taking service',
+    docs_url='/'
+)
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+@app.get('/')
+async def hello():
+    return {'message': 'Hello World'}
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+@app.get('/notes')
+async def get_all_notes():
+    pass
+
+
+@app.post('/notes')
+async def create_note():
+    pass
+
+
+@app.get('/notes/{note_id}')
+async def get_note_by_id(note_id):
+    pass
+
+
+@app.patch('/notes/{note_id}')
+async def update_note(note_id):
+    pass
+
+
+@app.delete('/notes/{note_id}')
+async def delete_note(note_id):
+    pass
